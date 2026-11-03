@@ -15,8 +15,7 @@ services:
     ports:
       - "80:80"                 # ¿Puerto 80 ocupado en tu PC? Usa otro: "8080:80"
     volumes:
-      - .git remote add origin https://github.com/hmaizteguirui-jpg/reto.git
-/nginx.conf:/etc/nginx/conf.d/default.conf:ro   # la configuración
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro   # la configuración
 
   web-publica:                       # → /mi-web/
     image: nginx:alpine
