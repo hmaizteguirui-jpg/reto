@@ -4,9 +4,9 @@
 //   - servicio publicado por ruta:       ruta: '/code/'
 //   - servicio publicado por subdominio: ruta: 'http://kuma.localhost/'  (la URL completa)
 const PORTAL = {
-  titulo: 'Mi servidor',
+  titulo: 'portal de egoi y jurgi',
   subtitulo: 'Reverse proxy con nginx y Docker',
-  pie: 'Práctica de reverse proxy · cambia este texto por tu nombre',
+  pie: 'reverse proxy de hegoi',
 };
 
 const APPS = [
@@ -23,4 +23,10 @@ const APPS = [
     descripcion: 'Gestión de contenedores Docker',
   },
   // ↓ Añade aquí las cajas nuevas, antes del ]; que cierra la lista
+ {
+    nombre: 'Whoami',
+    ruta: '/whoami/',                  // la misma ruta que su location
+    imagen: 'img/generica.svg',        // o descarga un icono en img/
+    descripcion: 'Muestra la petición que le llega',
+  },
 ];

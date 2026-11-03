@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="InnovaTech Solutions: desarrollo de software, infraestructura con contenedores, soporte y copias de seguridad para empresas.">
+  <title>InnovaTech Solutions · Tecnología que tu equipo entiende</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="#inicio" aria-label="InnovaTech Solutions, inicio">
+        <img src="img/logo.svg" alt="" width="36" height="36">
+        <span>InnovaTech Solutions</span>
+      </a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#empresa">Empresa</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contactanos" class="btn btn-small">Contactanos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Tecnología que tu equipo entiende y puede mantener.</h1>
+          <p class="hero-lead">Desarrollamos software, montamos la infraestructura donde funciona y nos ocupamos de que no se pierda nada.</p>
+          <p class="hero-actions">
+            <a class="btn" href="#contacto">Cuéntanos tu proyecto</a>
+            <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+          </p>
+        </div>
+        <img class="hero-art" src="img/hero.svg" alt="Esquema de servicios conectados a un único punto de entrada" width="420" height="320">
+      </div>
+    </section>
+
+    <section class="section" id="empresa">
+      <div class="wrap two-col">
+        <div>
+          <h2>Quiénes somos</h2>
+        </div>
+        <div class="prose">
+          <p>InnovaTech Solutions es una empresa de tecnología que ayuda a pymes a ordenar sus herramientas digitales: webs, intranets, aplicaciones a medida y los servidores que las sostienen.</p>
+          <p>Trabajamos con software abierto y contenedores, y documentamos cada proyecto para que el cliente pueda entenderlo, auditarlo y, si quiere, seguir sin nosotros.</p>
+          <ul class="facts">
+            <li><strong>Documentación incluida.</strong> Cada entrega lleva su esquema y su guía de puesta en marcha.</li>
+            <li><strong>Copias comprobadas.</strong> No damos una copia por buena hasta restaurarla.</li>
+            <li><strong>Trato directo.</strong> Hablas con quien programa, no con un intermediario.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="servicios">
+      <div class="wrap">
+        <h2>Servicios</h2>
+        <p class="section-lead">Cuatro áreas que se combinan según lo que necesite tu empresa.</p>
+        <div class="cards">
+          <article class="card">
+            <img src="img/s-dev.svg" alt="" width="48" height="48">
+            <h3>Desarrollo a medida</h3>
+            <p>Webs corporativas, intranets y aplicaciones adaptadas a tus procesos, con diseño que se ve bien en móvil y en escritorio.</p>
+          </article>
+          <article class="card">
+            <img src="img/s-cloud.svg" alt="" width="48" height="48">
+            <h3>Infraestructura con Docker</h3>
+            <p>Todos tus servicios en un solo servidor, detrás de un proxy inverso, fáciles de actualizar y de reproducir.</p>
+          </article>
+          <article class="card">
+            <img src="img/s-backup.svg" alt="" width="48" height="48">
+            <h3>Copias de seguridad</h3>
+            <p>Copias programadas, cifradas y con restauraciones de prueba para saber que funcionan el día que las necesites.</p>
+          </article>
+          <article class="card">
+            <img src="img/s-support.svg" alt="" width="48" height="48">
+            <h3>Soporte y monitorización</h3>
+            <p>Vigilamos tus servicios y te avisamos antes de que lo haga un cliente. Respuesta según la urgencia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="wrap two-col">
+        <div>
+          <h2>Contactanos</h2>
+          <p class="section-lead">Cuéntanos qué necesitas. Al enviar te mostraremos un resumen y el tiempo de respuesta estimado.</p>
+          <p class="note">Formulario simulado: los datos no se envían a ningún servidor.</p>
+        </div>
+
+        <div>
+          <div id="resumen" class="summary" tabindex="-1" hidden></div>
+
+          <form id="form-contacto" action="#" method="post" novalidate>
+            <div id="error-general" class="error-general" role="alert" hidden></div>
+
+            <div class="row">
+              <div class="field">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required minlength="3" autocomplete="given-name">
+                <p class="error" id="err-nombre"></p>
+              </div>
+              <div class="field">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" placeholder="Escribe tus apellidos" required minlength="3" maxlength="40" autocomplete="family-name">
+                <p class="error" id="err-apellidos"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="edad">Edad</label>
+                <input type="number" id="edad" name="edad" placeholder="Entre 16 y 65" required min="16" max="65" step="1" inputmode="numeric">
+                <p class="error" id="err-edad"></p>
+              </div>
+              <div class="field">
+                <label for="nacimiento">Fecha de nacimiento</label>
+                <input type="date" id="nacimiento" name="nacimiento" required autocomplete="bday">
+                <p class="error" id="err-nacimiento"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="9 dígitos, sin prefijo" required pattern="[0-9]{9}" inputmode="numeric" autocomplete="tel-national">
+                <p class="error" id="err-telefono"></p>
+              </div>
+              <div class="field">
+                <label for="cp">Código postal</label>
+                <input type="text" id="cp" name="cp" placeholder="5 dígitos" required pattern="[0-9]{5}" maxlength="5" inputmode="numeric" autocomplete="postal-code">
+                <p class="error" id="err-cp"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="nombre@empresa.com" required autocomplete="email">
+              <p class="error" id="err-email"></p>
+            </div>
+
+            <fieldset class="field" id="grupo-tipo">
+              <legend>Tipo de mensaje</legend>
+              <div class="radios">
+                <label><input type="radio" name="tipo" value="duda" required> Duda</label>
+                <label><input type="radio" name="tipo" value="sugerencia"> Sugerencia</label>
+                <label><input type="radio" name="tipo" value="queja"> Queja</label>
+                <label><input type="radio" name="tipo" value="otros"> Otros</label>
+              </div>
+              <p class="error" id="err-tipo"></p>
+            </fieldset>
+
+            <div class="field">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe al menos 20 caracteres" required minlength="20"></textarea>
+              <p class="hint"><span id="contador">0</span> / 20 caracteres mínimos</p>
+              <p class="error" id="err-mensaje"></p>
+            </div>
+
+            <div class="field">
+              <label for="archivos">Documentos adjuntos (opcional)</label>
+              <input type="file" id="archivos" name="archivos" multiple
+                     accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+              <p class="hint">PDF o Word. Puedes seleccionar varios.</p>
+              <p class="error" id="err-archivos"></p>
+            </div>
+
+            <div class="field check">
+              <label>
+                <input type="checkbox" id="privacidad" name="privacidad" required>
+                <span>He leído y acepto las condiciones de <a href="#contacto" onclick="return false">Protección de datos</a>.</span>
+              </label>
+              <p class="error" id="err-privacidad"></p>
+            </div>
+
+            <button type="submit" class="btn">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© InnovaTech Solutions. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/form.js"></script>
+</body>
+</html>

@@ -16,29 +16,15 @@ services:
       - "80:80"                 # ¿Puerto 80 ocupado en tu PC? Usa otro: "8080:80"
     volumes:
       - ./proxy/nginx.conf:/etc/nginx/conf.d/default.conf:ro   # la configuración
-      - ./proxy/web:/usr/share/nginx/html:ro                   # la web del portal
 
-  code:                         # VS Code en el navegador → /code/
-    image: lscr.io/linuxserver/code-server:latest
-    restart: unless-stopped
-    environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: Europe/Madrid
-      PASSWORD: "${CODE_PASSWORD:?Falta CODE_PASSWORD: crea el fichero .env a partir de .env.template}"
-    volumes:
-      - code_config:/config
-      - ./:/config/workspace    # el propio proyecto: puedes editarlo desde /code/
-
-  portainer:                    # gestión de Docker desde el navegador → /portainer/
-    image: portainer/portainer-ce:latest
+  web-publica:                       # → /mi-web/
+    image: nginx:alpine
     restart: unless-stopped
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - ./website:/usr/share/nginx/html:ro
 
-  # ↓ Añade aquí los servicios nuevos (Tarea 2 en adelante): dentro de services, antes de volumes.
-
-volumes:
-  code_config:
-  portainer_data:
+  intranet:                       # → /mi-web/
+    image: httpd
+    restart: unless-stopped
+    volumes:
+      - ./intranet:/usr/local/apache2/htdocs

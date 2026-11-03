@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intranet · InnovaTech Solutions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <img src="img/logo.svg" alt="" width="44" height="44">
+      <div>
+        <h1>InnovaTech Solutions</h1>
+        <p>Intranet y herramientas del equipo de desarrollo</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h2>Tus herramientas</h2>
+    <p class="lead">Elige un servicio para abrirlo en una pestaña nueva.</p>
+
+    <div class="grid">
+      <a class="card" data-sub="portainer" href="http://portainer.innovatechsolutions.com" target="_blank" rel="noopener">
+        <img src="img/portainer.svg" alt="Logo de Portainer" width="72" height="72">
+        <h3>Portainer</h3>
+        <p>Gestiona contenedores, imágenes y volúmenes desde el navegador.</p>
+        <span class="url">portainer.innovatechsolutions.com</span>
+      </a>
+
+      <a class="card" data-sub="code" href="http://code.innovatechsolutions.com" target="_blank" rel="noopener">
+        <img src="img/vscode.svg" alt="Logo de VS Code" width="72" height="72">
+        <h3>VS Code</h3>
+        <p>Edita los archivos de esta intranet. Los cambios se publican al guardar.</p>
+        <span class="url">code.innovatechsolutions.com</span>
+      </a>
+
+      <a class="card" data-sub="backup" href="http://backup.innovatechsolutions.com" target="_blank" rel="noopener">
+        <img src="img/duplicati.svg" alt="Logo de Duplicati" width="72" height="72">
+        <h3>Duplicati</h3>
+        <p>Consulta las copias de seguridad y restaura archivos.</p>
+        <span class="url">backup.innovatechsolutions.com</span>
+      </a>
+
+      <a class="card" data-sub="status" href="http://status.innovatechsolutions.com" target="_blank" rel="noopener">
+        <img src="img/kuma.svg" alt="Logo de Uptime Kuma" width="72" height="72">
+        <h3>Uptime Kuma</h3>
+        <p>Comprueba si los servicios están en marcha y recibe avisos de caídas.</p>
+        <span class="url">status.innovatechsolutions.com</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="wrap">© InnovaTech Solutions · Servido por Nginx desde un volumen Docker</footer>
+
+  <script>
+    // Los enlaces se adaptan al dominio con el que se accede (el dominio real vive en .env)
+    (function () {
+      var base = location.hostname.replace(/^intranet\./, '');
+      if (!base || base === location.hostname) return;
+      document.querySelectorAll('.card[data-sub]').forEach(function (a) {
+        var host = a.dataset.sub + '.' + base + (location.port ? ':' + location.port : '');
+        a.href = location.protocol + '//' + host;
+        a.querySelector('.url').textContent = host;
+      });
+    })();
+  </script>
+</body>
+</html>
