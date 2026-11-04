@@ -23,8 +23,56 @@ services:
     volumes:
       - ./website:/usr/share/nginx/html:ro
 
-  intranet:                       # → /mi-web/
-    image: httpd
+  intranet:
+    image: nginx:alpine              # antes httpd
     restart: unless-stopped
     volumes:
-      - ./intranet:/usr/local/apache2/htdocs
+      - ./intranet:/usr/share/nginx/html:ro
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock   # requisito: socket de Docker
+      - portainer_data:/data
+
+  code:
+    image: lscr.io/linuxserver/code-server:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - PASSWORD=${CODE_PASSWORD}
+      - DEFAULT_WORKSPACE=/config/workspace
+    volumes:
+      - ./intranet:/config/workspace     # bind mount: lo que edites se ve al instante
+      - code_config:/config
+
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    restart: unless-stopped
+    environment:
+      - PUID=0                           # root para poder leer el volumen de Portainer
+      - PGID=0
+      - TZ=${TZ}
+      - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
+      - DUPLICATI__WEBSERVICE_PASSWORD=${DUPLICATI_WEBUI_PASSWORD}
+      - CLI_ARGS=--webservice-interface=any --webservice-allowed-hostnames=*
+    volumes:
+      - duplicati_config:/config
+      - ./backups:/backups               # destino de las copias
+      - ./intranet:/source/intranet:ro   # origen 1: web de la intranet
+      - portainer_data:/source/portainer:ro   # origen 2: configuración de Portainer
+
+  kuma:                                  # servicio elegido: Uptime Kuma
+    image: louislam/uptime-kuma:1
+    restart: unless-stopped
+    volumes:
+      - kuma_data:/app/data
+
+volumes:
+  portainer_data:
+  code_config:
+  duplicati_config:
+  kuma_data:
