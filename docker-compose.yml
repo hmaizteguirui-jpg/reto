@@ -24,7 +24,7 @@ services:
       - ./website:/usr/share/nginx/html:ro
 
   intranet:
-    image: nginx:alpine              # antes httpd
+    image: nginx:alpine              
     restart: unless-stopped
     volumes:
       - ./intranet:/usr/share/nginx/html:ro
