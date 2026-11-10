@@ -46,7 +46,7 @@ services:
       - PASSWORD=${CODE_PASSWORD}
       - DEFAULT_WORKSPACE=/config/workspace
     volumes:
-      - ./intranet.cimientospro.local:/config/workspace     # bind mount: lo que edites se ve al instante
+      - .:/config/workspace     # bind mount: lo que edites se ve al instante
       - code_config:/config
 
   # duplicati:
