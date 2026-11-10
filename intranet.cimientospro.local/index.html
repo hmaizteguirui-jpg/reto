@@ -22,11 +22,10 @@
     <p class="lead">Elige un servicio para abrirlo en una pestaña nueva.</p>
 
     <div class="grid">
-      <a class="card" data-sub="portainer" href="http://portainer.cimientospro.local" target="_blank" rel="noopener">
+      <a class="card" data-sub="portainer" href="./portainer" target="_blank" rel="noopener">
         <img src="img/portainer.svg" alt="Logo de Portainer" width="72" height="72">
         <h3>Portainer</h3>
         <p>Gestiona contenedores, imágenes y volúmenes desde el navegador.</p>
-        <span class="url">portainer.cimientospro.local</span>
       </a>
 
       <a class="card" data-sub="code" href="http://code.cimientospro.local" target="_blank" rel="noopener">
@@ -53,18 +52,5 @@
   </main>
 
   <footer class="wrap">© InnovaTech Solutions · Servido por Nginx desde un volumen Docker</footer>
-
-  <script>
-    // Los enlaces se adaptan al dominio con el que se accede (el dominio real vive en .env)
-    (function () {
-      var base = location.hostname.replace(/^intranet\./, '');
-      if (!base || base === location.hostname) return;
-      document.querySelectorAll('.card[data-sub]').forEach(function (a) {
-        var host = a.dataset.sub + '.' + base + (location.port ? ':' + location.port : '');
-        a.href = location.protocol + '//' + host;
-        a.querySelector('.url').textContent = host;
-      });
-    })();
-  </script>
 </body>
 </html>
