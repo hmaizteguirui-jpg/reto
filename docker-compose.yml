@@ -21,13 +21,13 @@ services:
     image: nginx:alpine
     restart: unless-stopped
     volumes:
-      - ./website:/usr/share/nginx/html:ro
+      - ./website.cimientospro.local:/usr/share/nginx/html:ro
 
   intranet:
     image: nginx:alpine              
     restart: unless-stopped
     volumes:
-      - ./intranet:/usr/share/nginx/html:ro
+      - ./intranet.cimientospro.local:/usr/share/nginx/html:ro
 
   portainer:
     image: portainer/portainer-ce:latest
@@ -46,7 +46,7 @@ services:
       - PASSWORD=${CODE_PASSWORD}
       - DEFAULT_WORKSPACE=/config/workspace
     volumes:
-      - ./intranet:/config/workspace     # bind mount: lo que edites se ve al instante
+      - ./intranet.cimientospro.local:/config/workspace     # bind mount: lo que edites se ve al instante
       - code_config:/config
 
   duplicati:
@@ -62,7 +62,7 @@ services:
     volumes:
       - duplicati_config:/config
       - ./backups:/backups               # destino de las copias
-      - ./intranet:/source/intranet:ro   # origen 1: web de la intranet
+      - ./intranet.cimientospro.local:/source/intranet.cimientospro.local:ro   # origen 1: web de la intranet
       - portainer_data:/source/portainer:ro   # origen 2: configuración de Portainer
 
   kuma:                                  # servicio elegido: Uptime Kuma
