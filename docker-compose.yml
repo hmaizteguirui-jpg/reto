@@ -68,6 +68,8 @@ services:
     restart: unless-stopped
     volumes:
       - kuma_data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro   # requisito: socket de Docker
+
 
 volumes:
   portainer_data:
