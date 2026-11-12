@@ -49,30 +49,28 @@ services:
       - .:/config/workspace     # bind mount: lo que edites se ve al instante
       - code_config:/config
 
-  # duplicati:
-  #   image: lscr.io/linuxserver/duplicati:latest
-  #   restart: unless-stopped
-  #   environment:
-  #     - PUID=0                           # root para poder leer el volumen de Portainer
-  #     - PGID=0
-  #     - TZ=${TZ}
-  #     - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
-  #     - DUPLICATI__WEBSERVICE_PASSWORD=${DUPLICATI_WEBUI_PASSWORD}
-  #     - CLI_ARGS=--webservice-interface=any --webservice-allowed-hostnames=*
-  #   volumes:
-  #     - duplicati_config:/config
-  #     - ./backups:/backups               # destino de las copias
-  #     - ./intranet.cimientospro.local:/source/intranet.cimientospro.local:ro   # origen 1: web de la intranet
-  #     - portainer_data:/source/portainer:ro   # origen 2: configuración de Portainer
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    restart: unless-stopped
+    environment:
+      - PUID=0                           # root para poder leer el volumen de Portainer
+      - PGID=0
+      - TZ=${TZ}
+      - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
+      - DUPLICATI__WEBSERVICE_PASSWORD=${DUPLICATI_WEBUI_PASSWORD}
+      - CLI_ARGS=--webservice-interface=any --webservice-allowed-hostnames=*
+    volumes:
+      - duplicati_config:/config
+      - .:/source   # origen 1: web de la intranet
 
-  # kuma:                                  # servicio elegido: Uptime Kuma
-  #   image: louislam/uptime-kuma:1
-  #   restart: unless-stopped
-  #   volumes:
-  #     - kuma_data:/app/data
+  kuma:                                  # servicio elegido: Uptime Kuma
+    image: louislam/uptime-kuma:1
+    restart: unless-stopped
+    volumes:
+      - kuma_data:/app/data
 
 volumes:
   portainer_data:
   code_config:
-  # duplicati_config:
-  # kuma_data:
+  duplicati_config:
+  kuma_data:
